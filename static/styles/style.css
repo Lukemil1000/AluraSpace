@@ -265,9 +265,9 @@ table {
     font-size: 24px;
 }
 
-.menu-lateral__navegacao a:first-child {
+.menu-selecionado {
     font-weight: bold;
-    color: #7B78E5;
+    color: #7B78E5;    
 }
 
 .menu-lateral__navegacao img {
