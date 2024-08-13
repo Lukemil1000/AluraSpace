@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "galeria/base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alura Space</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
-
-</head>
-
-<body>
+{% block content %}
     <div class="pagina-inicial">
         <header class="cabecalho">
-            <img src="/assets/logo/Logo(2).png" alt="Logo da Alura Space" />
+            <img src='{% static "/assets/logo/Logo(2).png" %}' alt="Logo da Alura Space" />
             <div class="cabecalho__busca">
                 <div class="busca__fundo">
                     <input class="busca__input" type="text" placeholder="O que você procura?">
@@ -60,6 +48,4 @@
         </div>
         <p class="rodape__texto">Desenvolvido por Alura</p>
     </footer>
-</body>
-
-</html>
+{% endblock content %}
