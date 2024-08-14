@@ -22,7 +22,7 @@
                 <ul class="cards__lista">
                     {% for card in cards %}
                     <li class="card">
-                        <a href="{% url 'imagem' %}">
+                        <a href="{% url 'imagem' card.id %}">
                             <img class="card__imagem" src='{% static "/assets/imagens/galeria/carina-nebula.png" %}' alt="foto">
                         </a>
                         <span class="card__tag">{{card.categoria}}</span>
