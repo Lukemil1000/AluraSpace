@@ -3,9 +3,13 @@
 <header class="cabecalho">
     <img src='{% static "/assets/logo/Logo(2).png" %}' alt="Logo" />
     <div class="cabecalho__busca">
-        <div class="busca__fundo">
-            <input class="busca__input" type="text" placeholder="O que você procura?">
-            <img class="busca__icone" src='{% static "/assets/ícones/1x/search.png" %}' alt="ícone de search">
-        </div>
+        <form action="{% url 'index' %}">
+            <div class="busca__fundo">
+                <input class="busca__input" type="text" name="buscar" placeholder="O que você procura?">
+                <button type="submit", class="pesquisa">
+                    <img class="busca__icone" src='{% static "/assets/ícones/1x/search.png" %}' alt="ícone de search">
+                </button>
+            </div>
+        </form>
     </div>
 </header>
