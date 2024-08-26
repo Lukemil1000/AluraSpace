@@ -7,8 +7,16 @@
         {% else %}
             <a href="{% url 'index' %}"><img src='{% static "/assets/ícones/1x/Home - inativo.png" %}'> Home</a>
         {% endif %}
-        <a href="{% url 'index' %}"><img src='{% static "/assets/ícones/1x/Mais vistas - inativo.png" %}'> Mais vistas</a>
-        <a href="#"><img src='{% static "/assets/ícones/1x/Novas - inativo.png" %}'> Novas</a>
+        {% if request.resolver_match.url_name == "login" %}
+            <a href="{% url 'login' %}"><img src='{% static "/assets/ícones/1x/Mais vistas - ativo.png" %}'> Login</a>
+        {% else %}
+            <a href="{% url 'login' %}"><img src='{% static "/assets/ícones/1x/Mais vistas - inativo.png" %}'> Login</a>
+        {% endif %}
+        {% if request.resolver_match.url_name == "cadastro" %}
+            <a href="{% url 'cadastro' %}"><img src='{% static "/assets/ícones/1x/Novas - ativo.png" %}'> Cadastro</a>
+        {% else %}
+            <a href="{% url 'cadastro' %}"><img src='{% static "/assets/ícones/1x/Novas - inativo.png" %}'> Cadastro</a>
+        {% endif %}
         <a href="#"><img src='{% static "/assets/ícones/1x/Surpreenda-me - inativo.png" %}'> Surpreenda-me</a>
     </nav>
 </section>
