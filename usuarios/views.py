@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib import auth
+from django.contrib import auth, messages
 from usuarios.forms import LoginForms, CadastroForms
 
 # Create your views here.
@@ -19,9 +19,11 @@ def login(request):
             )
 
             if usuario is not None:
+                messages.success(request, "Logado com sucesso!")
                 auth.login(request, usuario)
                 return redirect("index")
             else:
+                messages.error(request, "Erro ao efetuar login")
                 return redirect("login")
 
     return render(request, "usuarios/login.html", {"form": form})
@@ -34,9 +36,11 @@ def cadastro(request):
 
         if form.is_valid():
             if form["senha_1"].value() != form["senha_2"].value():
+                messages.error(request, "Senhas precisam ser iguais")
                 return redirect("cadastro")
             
             if User.objects.filter(username=form["nome"].value()).exists():
+                messages.error(request, "Usuário já existente")
                 return redirect("cadastro")
             
             usuario = User.objects.create_user(
@@ -46,6 +50,7 @@ def cadastro(request):
             )
 
             usuario.save()
+            messages.success(request, "Cadastro efetuado com sucesso!")
             return redirect("login")
 
     return render(request, "usuarios/cadastro.html", {"form": form})

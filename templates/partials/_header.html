@@ -2,6 +2,11 @@
 
 <header class="cabecalho">
     <img src='{% static "/assets/logo/Logo(2).png" %}' alt="Logo" />
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        <p id="messages">{{ message }}</p>
+    </div>
+    {% endfor %}
     <div class="cabecalho__busca">
         <form action="{% url 'index' %}">
             <div class="busca__fundo">
