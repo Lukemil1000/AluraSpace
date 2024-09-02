@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <section class="galeria" style="margin-left: 5em">
+    <section class="login" style="margin-left: 5em">
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
             <div class="row">
@@ -12,9 +12,9 @@
                     {{ field }}
                 </div>
                 {% endfor %}
-            </div>
-            <div class="col-12 text-center">
-                <button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Login</button>
+                <div class="col-12 text-center">
+                    <button class="btn" style="padding: top 5px;" type="submit">Login</button>
+                </div>
             </div>
         </form>
     </section>
