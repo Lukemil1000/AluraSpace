@@ -35,10 +35,6 @@ def cadastro(request):
         form = CadastroForms(request.POST)
 
         if form.is_valid():
-            if form["senha_1"].value() != form["senha_2"].value():
-                messages.error(request, "Senhas precisam ser iguais")
-                return redirect("cadastro")
-            
             if User.objects.filter(username=form["nome"].value()).exists():
                 messages.error(request, "Usuário já existente")
                 return redirect("cadastro")
