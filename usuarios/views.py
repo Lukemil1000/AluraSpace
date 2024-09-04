@@ -65,9 +65,7 @@ def nova_imagem(request):
 
     if request.method == 'POST':
         form = FotografiaForms(request.POST, request.FILES)
-        print("a")
         if form.is_valid():
-            print("b")
             form.save()
             messages.success(request, 'Nova fotografia cadastrada!')
             return redirect('index')
