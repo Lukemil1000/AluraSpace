@@ -3,7 +3,7 @@
 
 {% block content %}
     <section class="login" style="margin-left: 5em">
-        <form action="{% url 'nova_imagem' %}" method="POST">
+        <form action="{% url 'nova_imagem' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
                 {% for field in form.visible_fields %}
