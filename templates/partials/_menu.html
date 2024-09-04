@@ -20,7 +20,13 @@
                 <a href="{% url 'cadastro' %}"><img src='{% static "/assets/ícones/1x/Novas - inativo.png" %}'> Cadastro</a>
             {% endif %}
         {% else %}
+            {% if request.resolver_match.url_name == "nova_imagem" %}
+                <a href="{% url 'nova_imagem' %}"><img src='{% static "/assets/ícones/1x/Novas - ativo.png" %}'> Nova Imagem</a>
+            {% else %}
+                <a href="{% url 'nova_imagem' %}"><img src='{% static "/assets/ícones/1x/Novas - inativo.png" %}'> Nova Imagem</a>
+            {% endif %}
             <a href="{% url 'logout' %}"><img src='{% static "/assets/ícones/1x/Surpreenda-me - inativo.png" %}'> Sair</a>
         {% endif %}
+        
     </nav>
 </section>

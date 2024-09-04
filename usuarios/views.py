@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
-from usuarios.forms import LoginForms, CadastroForms
+from usuarios.forms import LoginForms, CadastroForms, FotografiaForms
 
 # Create your views here.
 
@@ -55,3 +55,7 @@ def logout(request):
     auth.logout(request)
     messages.success(request, "Usuário deslogado com sucesso!")
     return redirect("login")
+
+def nova_imagem(request):
+    form = FotografiaForms
+    return render(request, "usuarios/nova_imagem.html", {"form": form})
