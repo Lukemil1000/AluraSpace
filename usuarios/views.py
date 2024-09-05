@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
+from galeria.models import Fotografia
 from usuarios.forms import LoginForms, CadastroForms, FotografiaForms
 
 # Create your views here.
@@ -71,3 +72,30 @@ def nova_imagem(request):
             return redirect('index')
         
     return render(request, "usuarios/nova_imagem.html", {"form": form})
+
+def editar_imagem(request, id):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Usuário não logado')
+        return redirect('login')
+    
+    fotografia = Fotografia.objects.get(id=id)
+    form = FotografiaForms(instance=fotografia)
+
+    if request.method == 'POST':
+        form = FotografiaForms(request.POST, request.FILES, instance=fotografia)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Fotografia editada com sucesso!')
+            return redirect('index')
+
+    return render(request, 'usuarios/editar_imagem.html', {'form': form, 'id': id})
+    
+def deletar_imagem(request, id):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Usuário não logado')
+        return redirect('login')
+    
+    fotografia = Fotografia.objects.get(id=id)
+    fotografia.delete()
+    messages.success(request, 'Deleção feita com sucesso!')
+    return redirect('index')
